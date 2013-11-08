@@ -58,51 +58,210 @@ function hj_hosting_after_hosting() {
 	?>
 
 	<table class="table table-striped">
-		<tr><th><?php _e( 'Disk Space' ); ?></th><td><?php echo hj_table_format_values( $disk ); ?></td></tr>
-		<tr><th><?php _e( 'Bandwidth' ); ?></th><td><?php echo hj_table_format_values( $bandwidth ); ?></td></tr>
-		<tr><th><?php _e( 'cPanel' ); ?></th><td><?php echo hj_table_format_values( $cpanel, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Databases' ); ?></th><td><?php echo hj_table_format_values( $databases ); ?></td></tr>
-		<tr><th><?php _e( 'E-mail Accounts' ); ?></th><td><?php echo hj_table_format_values( $emailsnr ); ?></td></tr>
-		<tr><th><?php _e( 'Softaculous' ); ?></th><td><?php echo hj_table_format_values( $softaculous, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Fantastico' ); ?></th><td><?php echo hj_table_format_values( $fantastico, 'check' ); ?></td></tr>
+		<tr>
+			<th><?php _e( 'Disk Space' ); ?></th>
+			<td><?php echo hj_table_format_values( $disk ); ?></td>
+		</tr>
 
-		<tr><th><?php _e( 'Addon Domains' ); ?></th><td><?php echo hj_table_format_values( $addondomain ); ?></td></tr>
-		<tr><th><?php _e( 'Parked Domains' ); ?></th><td><?php echo hj_table_format_values( $parkdomains ); ?></td></tr>
-		<tr><th><?php _e( 'Free Domain' ); ?></th><td><?php echo hj_table_format_values( $freedomain, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Sub-Domains' ); ?></th><td><?php echo hj_table_format_values( $subdomains ); ?></td></tr>
-		<tr><th><?php _e( 'FTP Access' ); ?></th><td><?php echo hj_table_format_values( $ftp, 'check' ); ?></td></tr>
+		<tr>
+			<th><?php _e( 'Bandwidth' ); ?></th>
+			<td><?php echo hj_table_format_values( $bandwidth ); ?></td>
+		</tr>
+		<tr>
+			<th><?php _e( 'cPanel' ); ?></th>
+			<td><?php echo hj_table_format_values( $cpanel, 'check' ); ?></td>
+		</tr>
 
-		<tr><th><?php _e( '99.9% Uptime Guarantee' ); ?></th><td><?php echo hj_table_format_values( $uptimeguara, 'check' ); ?></td></tr>
-		<tr><th><?php _e( '24/7 Support' ); ?></th><td><?php echo hj_table_format_values( $support247, 'check' ); ?></td></tr>
-		<tr><th><?php _e( '30-Day Money Back Guarantee' ); ?></th><td><?php echo hj_table_format_values( $moneyback, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Spam Filters' ); ?></th><td><?php echo hj_table_format_values( $spamfilter, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Virus Protection' ); ?></th><td><?php echo hj_table_format_values( $antivirus, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Boxtrappers' ); ?></th><td><?php echo hj_table_format_values( $boxtrappers, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Horde' ); ?></th><td><?php echo hj_table_format_values( $horde, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'SquirrelMail' ); ?></th><td><?php echo hj_table_format_values( $squirrel, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'roundcube' ); ?></th><td><?php echo hj_table_format_values( $roundcube, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'IMAP Support' ); ?></th><td><?php echo hj_table_format_values( $imap, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Unlimited! E-mail Forwarders' ); ?></th><td><?php echo hj_table_format_values( $forwarder, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Unlimited! E-mail Responders' ); ?></th><td><?php echo hj_table_format_values( $responder, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'SMTP' ); ?></th><td><?php echo hj_table_format_values( $smtp, 'check' ); ?></td></tr>
+		<tr>
+			<th><?php _e( 'Databases' ); ?></th>
+			<td><?php echo hj_table_format_values( $databases ); ?></td>
+		</tr>
 
-		<tr><th><?php _e( 'PHP 5' ); ?></th><td><?php echo hj_table_format_values( $php5, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'PERL' ); ?></th><td><?php echo hj_table_format_values( $perl, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'MySQL' ); ?></th><td><?php echo hj_table_format_values( $mysql, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'PostgreSQL' ); ?></th><td><?php echo hj_table_format_values( $postgresql, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Javascript' ); ?></th><td><?php echo hj_table_format_values( $js, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'CGI-Bin' ); ?></th><td><?php echo hj_table_format_values( $cgibin, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'GD Library' ); ?></th><td><?php echo hj_table_format_values( $gd, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Directory Protection' ); ?></th><td><?php echo hj_table_format_values( $dirprotect, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Sendmail' ); ?></th><td><?php echo hj_table_format_values( $sendmail, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Shopping Carts' ); ?></th><td><?php echo hj_table_format_values( $carts, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Zend Optimizer' ); ?></th><td><?php echo hj_table_format_values( $zend, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Cronjobs' ); ?></th><td><?php echo hj_table_format_values( $crons, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Ioncube' ); ?></th><td><?php echo hj_table_format_values( $ioncube, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Ability to Backup/Restore' ); ?></th><td><?php echo hj_table_format_values( $backups, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Analog Stats' ); ?></th><td><?php echo hj_table_format_values( $anstats, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Awstats' ); ?></th><td><?php echo hj_table_format_values( $awstats, 'check' ); ?></td></tr>
-		<tr><th><?php _e( 'Webalizer' ); ?></th><td><?php echo hj_table_format_values( $webalizer, 'check' ); ?></td></tr>
+		<tr>
+			<th><?php _e( 'E-mail Accounts' ); ?></th>
+			<td><?php echo hj_table_format_values( $emailsnr ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Softaculous' ); ?></th>
+			<td><?php echo hj_table_format_values( $softaculous, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Fantastico' ); ?></th>
+			<td><?php echo hj_table_format_values( $fantastico, 'check' ); ?></td></tr>
+
+		<tr>
+			<th><?php _e( 'Addon Domains' ); ?></th>
+			<td><?php echo hj_table_format_values( $addondomain ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Parked Domains' ); ?></th>
+			<td><?php echo hj_table_format_values( $parkdomains ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Free Domain' ); ?></th>
+			<td><?php echo hj_table_format_values( $freedomain, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Sub-Domains' ); ?></th>
+			<td><?php echo hj_table_format_values( $subdomains ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'FTP Access' ); ?></th>
+			<td><?php echo hj_table_format_values( $ftp, 'check' ); ?></td></tr>
+
+		<tr>
+			<th><?php _e( '99.9% Uptime Guarantee' ); ?></th>
+			<td><?php echo hj_table_format_values( $uptimeguara, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( '24/7 Support' ); ?></th>
+			<td><?php echo hj_table_format_values( $support247, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( '30-Day Money Back Guarantee' ); ?></th>
+			<td><?php echo hj_table_format_values( $moneyback, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Spam Filters' ); ?></th>
+			<td><?php echo hj_table_format_values( $spamfilter, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Virus Protection' ); ?></th>
+			<td><?php echo hj_table_format_values( $antivirus, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Boxtrappers' ); ?></th>
+			<td><?php echo hj_table_format_values( $boxtrappers, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Horde' ); ?></th>
+			<td><?php echo hj_table_format_values( $horde, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'SquirrelMail' ); ?></th>
+			<td><?php echo hj_table_format_values( $squirrel, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'roundcube' ); ?></th>
+			<td><?php echo hj_table_format_values( $roundcube, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'IMAP Support' ); ?></th>
+			<td><?php echo hj_table_format_values( $imap, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Unlimited! E-mail Forwarders' ); ?></th>
+			<td><?php echo hj_table_format_values( $forwarder, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Unlimited! E-mail Responders' ); ?></th>
+			<td><?php echo hj_table_format_values( $responder, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'SMTP' ); ?></th>
+			<td><?php echo hj_table_format_values( $smtp, 'check' ); ?></td></tr>
+
+		<tr>
+			<th><?php _e( 'PHP 5' ); ?></th>
+			<td><?php echo hj_table_format_values( $php5, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'PERL' ); ?></th>
+			<td><?php echo hj_table_format_values( $perl, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'MySQL' ); ?></th>
+			<td><?php echo hj_table_format_values( $mysql, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'PostgreSQL' ); ?></th>
+			<td><?php echo hj_table_format_values( $postgresql, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Javascript' ); ?></th>
+			<td><?php echo hj_table_format_values( $js, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'CGI-Bin' ); ?></th>
+			<td><?php echo hj_table_format_values( $cgibin, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'GD Library' ); ?></th>
+			<td><?php echo hj_table_format_values( $gd, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Directory Protection' ); ?></th>
+			<td><?php echo hj_table_format_values( $dirprotect, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Sendmail' ); ?></th>
+			<td><?php echo hj_table_format_values( $sendmail, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Shopping Carts' ); ?></th>
+			<td><?php echo hj_table_format_values( $carts, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Zend Optimizer' ); ?></th>
+			<td><?php echo hj_table_format_values( $zend, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Cronjobs' ); ?></th>
+			<td><?php echo hj_table_format_values( $crons, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Ioncube' ); ?></th>
+			<td><?php echo hj_table_format_values( $ioncube, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Ability to Backup/Restore' ); ?></th>
+			<td><?php echo hj_table_format_values( $backups, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Analog Stats' ); ?></th>
+			<td><?php echo hj_table_format_values( $anstats, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Awstats' ); ?></th>
+			<td><?php echo hj_table_format_values( $awstats, 'check' ); ?></td>
+		</tr>
+
+		<tr>
+			<th><?php _e( 'Webalizer' ); ?></th>
+			<td><?php echo hj_table_format_values( $webalizer, 'check' ); ?></td></tr>
 	</table>
 	<?php
 }
