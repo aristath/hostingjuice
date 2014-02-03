@@ -57,6 +57,12 @@ function hj_hosting_metabox( array $meta_boxes ) {
 					array( 'name' => 'Special',  'value' => 'special', ),
                ),
 			),
+
+			array( 'id'   => $prefix . 'purchaselink',  'name' => 'Purchase Link',             'type' => 'text' ),
+			array( 'id'   => $prefix . 'pricepermonth', 'name' => 'Price Per Month',           'type' => 'text' ),
+			array( 'id'   => $prefix . 'priceperyear',  'name' => 'Price Per Year',            'type' => 'text' ),
+
+
 			array( 'id'   => $prefix . 'disk',        'name' => 'Disk Space',                  'type' => 'text' ),
 			array( 'id'   => $prefix . 'bandwidth',   'name' => 'Bandwidth',                   'type' => 'text' ),
 			array( 'id'   => $prefix . 'cpanel',      'name' => 'cPanel',                      'type' => 'checkbox' ),
