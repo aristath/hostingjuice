@@ -57,211 +57,352 @@ function hj_hosting_after_hosting() {
 
 	?>
 
-	<table class="table table-striped">
-		<tr>
-			<th><?php _e( 'Disk Space' ); ?></th>
-			<td><?php echo hj_table_format_values( $disk ); ?></td>
-		</tr>
+	<?php
+		/*
+		 * The FEATURES table
+		 */
+	?>
+	<table class="table table-bordered table-striped">
 
-		<tr>
-			<th><?php _e( 'Bandwidth' ); ?></th>
-			<td><?php echo hj_table_format_values( $bandwidth ); ?></td>
-		</tr>
-		<tr>
-			<th><?php _e( 'cPanel' ); ?></th>
-			<td><?php echo hj_table_format_values( $cpanel, 'check' ); ?></td>
-		</tr>
+		<tr class="info"><td colspan="2">Features</td></tr>
 
-		<tr>
-			<th><?php _e( 'Databases' ); ?></th>
-			<td><?php echo hj_table_format_values( $databases ); ?></td>
-		</tr>
+		<?php if ( isset( $disk ) && !empty( $disk ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Disk Space' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $disk ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'E-mail Accounts' ); ?></th>
-			<td><?php echo hj_table_format_values( $emailsnr ); ?></td>
-		</tr>
+		<?php if ( isset( $bandwidth ) && !empty( $bandwidth ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Bandwidth' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $bandwidth ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Softaculous' ); ?></th>
-			<td><?php echo hj_table_format_values( $softaculous, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $cpanel ) && !empty( $cpanel ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'cPanel' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $cpanel, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Fantastico' ); ?></th>
-			<td><?php echo hj_table_format_values( $fantastico, 'check' ); ?></td></tr>
+		<?php if ( isset( $databases ) && !empty( $databases ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Databases' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $databases ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Addon Domains' ); ?></th>
-			<td><?php echo hj_table_format_values( $addondomain ); ?></td>
-		</tr>
+		<?php if ( isset( $emailsnr ) && !empty( $emailsnr ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'E-mail Accounts' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $emailsnr ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Parked Domains' ); ?></th>
-			<td><?php echo hj_table_format_values( $parkdomains ); ?></td>
-		</tr>
+		<?php if ( isset( $softaculous ) && !empty( $softaculous ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Softaculous' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $softaculous, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Free Domain' ); ?></th>
-			<td><?php echo hj_table_format_values( $freedomain, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $fantastico ) && !empty( $fantastico ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Fantastico' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $fantastico, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Sub-Domains' ); ?></th>
-			<td><?php echo hj_table_format_values( $subdomains ); ?></td>
-		</tr>
+		<?php if ( isset( $addondomain ) && !empty( $addondomain ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Addon Domains' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $addondomain ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'FTP Access' ); ?></th>
-			<td><?php echo hj_table_format_values( $ftp, 'check' ); ?></td></tr>
+		<?php if ( isset( $parkdomains ) && !empty( $parkdomains ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Parked Domains' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $parkdomains ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( '99.9% Uptime Guarantee' ); ?></th>
-			<td><?php echo hj_table_format_values( $uptimeguara, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $freedomain ) && !empty( $freedomain ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Free Domain' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $freedomain, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( '24/7 Support' ); ?></th>
-			<td><?php echo hj_table_format_values( $support247, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $subdomains ) && !empty( $subdomains ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Sub-Domains' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $subdomains ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( '30-Day Money Back Guarantee' ); ?></th>
-			<td><?php echo hj_table_format_values( $moneyback, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $ftp ) && !empty( $ftp ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'FTP Access' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $ftp, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+	</table>
 
-		<tr>
-			<th><?php _e( 'Spam Filters' ); ?></th>
-			<td><?php echo hj_table_format_values( $spamfilter, 'check' ); ?></td>
-		</tr>
 
-		<tr>
-			<th><?php _e( 'Virus Protection' ); ?></th>
-			<td><?php echo hj_table_format_values( $antivirus, 'check' ); ?></td>
-		</tr>
+	<?php
+		/*
+		 * The SUPPORT table
+		 */
+	?>
+	<table class="table table-bordered table-striped">
 
-		<tr>
-			<th><?php _e( 'Boxtrappers' ); ?></th>
-			<td><?php echo hj_table_format_values( $boxtrappers, 'check' ); ?></td>
-		</tr>
+		<tr class="info"><td colspan="2">Support</td></tr>
 
-		<tr>
-			<th><?php _e( 'Horde' ); ?></th>
-			<td><?php echo hj_table_format_values( $horde, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $uptimeguara ) && !empty( $uptimeguara ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( '99.9% Uptime Guarantee' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $uptimeguara, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'SquirrelMail' ); ?></th>
-			<td><?php echo hj_table_format_values( $squirrel, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $support247 ) && !empty( $support247 ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( '24/7 Support' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $support247, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'roundcube' ); ?></th>
-			<td><?php echo hj_table_format_values( $roundcube, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $moneyback ) && !empty( $moneyback ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( '30-Day Money Back Guarantee' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $moneyback, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+	</table>
 
-		<tr>
-			<th><?php _e( 'IMAP Support' ); ?></th>
-			<td><?php echo hj_table_format_values( $imap, 'check' ); ?></td>
-		</tr>
 
-		<tr>
-			<th><?php _e( 'Unlimited! E-mail Forwarders' ); ?></th>
-			<td><?php echo hj_table_format_values( $forwarder, 'check' ); ?></td>
-		</tr>
+	<?php
+		/*
+		 * The EMAIL FEATURES table
+		 */
+	?>
+	<table class="table table-bordered table-striped">
 
-		<tr>
-			<th><?php _e( 'Unlimited! E-mail Responders' ); ?></th>
-			<td><?php echo hj_table_format_values( $responder, 'check' ); ?></td>
-		</tr>
+		<tr class="info"><td colspan="2">email features</td></tr>
 
-		<tr>
-			<th><?php _e( 'SMTP' ); ?></th>
-			<td><?php echo hj_table_format_values( $smtp, 'check' ); ?></td></tr>
+		<?php if ( isset( $spamfilter ) && !empty( $spamfilter ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Spam Filters' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $spamfilter, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'PHP 5' ); ?></th>
-			<td><?php echo hj_table_format_values( $php5, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $antivirus ) && !empty( $antivirus ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Virus Protection' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $antivirus, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'PERL' ); ?></th>
-			<td><?php echo hj_table_format_values( $perl, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $boxtrappers ) && !empty( $boxtrappers ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Boxtrappers' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $boxtrappers, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'MySQL' ); ?></th>
-			<td><?php echo hj_table_format_values( $mysql, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $horde ) && !empty( $horde ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Horde' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $horde, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'PostgreSQL' ); ?></th>
-			<td><?php echo hj_table_format_values( $postgresql, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $squirrel ) && !empty( $squirrel ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'SquirrelMail' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $squirrel, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Javascript' ); ?></th>
-			<td><?php echo hj_table_format_values( $js, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $roundcube ) && !empty( $roundcube ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'roundcube' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $roundcube, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'CGI-Bin' ); ?></th>
-			<td><?php echo hj_table_format_values( $cgibin, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $imap ) && !empty( $imap ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'IMAP Support' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $imap, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'GD Library' ); ?></th>
-			<td><?php echo hj_table_format_values( $gd, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $forwarder ) && !empty( $forwarder ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Unlimited! E-mail Forwarders' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $forwarder, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Directory Protection' ); ?></th>
-			<td><?php echo hj_table_format_values( $dirprotect, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $responder ) && !empty( $responder ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Unlimited! E-mail Responders' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $responder, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Sendmail' ); ?></th>
-			<td><?php echo hj_table_format_values( $sendmail, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $smtp ) && !empty( $smtp ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'SMTP' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $smtp, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+	</table>
 
-		<tr>
-			<th><?php _e( 'Shopping Carts' ); ?></th>
-			<td><?php echo hj_table_format_values( $carts, 'check' ); ?></td>
-		</tr>
 
-		<tr>
-			<th><?php _e( 'Zend Optimizer' ); ?></th>
-			<td><?php echo hj_table_format_values( $zend, 'check' ); ?></td>
-		</tr>
+	<?php
+		/*
+		 * The OTHER FEATURES table
+		 */
+	?>
+	<table class="table table-bordered table-striped">
 
-		<tr>
-			<th><?php _e( 'Cronjobs' ); ?></th>
-			<td><?php echo hj_table_format_values( $crons, 'check' ); ?></td>
-		</tr>
+		<tr class="info"><td colspan="2">Other Features</td></tr>
 
-		<tr>
-			<th><?php _e( 'Ioncube' ); ?></th>
-			<td><?php echo hj_table_format_values( $ioncube, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $php5 ) && !empty( $php5 ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'PHP 5' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $php5, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Ability to Backup/Restore' ); ?></th>
-			<td><?php echo hj_table_format_values( $backups, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $perl ) && !empty( $perl ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'PERL' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $perl, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Analog Stats' ); ?></th>
-			<td><?php echo hj_table_format_values( $anstats, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $mysql ) && !empty( $mysql ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'MySQL' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $mysql, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Awstats' ); ?></th>
-			<td><?php echo hj_table_format_values( $awstats, 'check' ); ?></td>
-		</tr>
+		<?php if ( isset( $postgresql ) && !empty( $postgresql ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'PostgreSQL' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $postgresql, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 
-		<tr>
-			<th><?php _e( 'Webalizer' ); ?></th>
-			<td><?php echo hj_table_format_values( $webalizer, 'check' ); ?></td></tr>
+		<?php if ( isset( $js ) && !empty( $js ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Javascript' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $js, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $cgibin ) && !empty( $cgibin ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'CGI-Bin' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $cgibin, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $gd ) && !empty( $gd ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'GD Library' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $gd, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $dirprotect ) && !empty( $dirprotect ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Directory Protection' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $dirprotect, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $sendmail ) && !empty( $sendmail ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Sendmail' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $sendmail, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $carts ) && !empty( $carts ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Shopping Carts' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $carts, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $zend ) && !empty( $zend ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Zend Optimizer' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $zend, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $crons ) && !empty( $crons ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Cronjobs' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $crons, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $ioncube ) && !empty( $ioncube ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Ioncube' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $ioncube, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $backups ) && !empty( $backups ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Ability to Backup/Restore' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $backups, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+	</table>
+
+
+	<?php
+		/*
+		 * The STATISTICS table
+		 */
+	?>
+	<table class="table table-bordered table-striped">
+
+		<tr class="info"><td colspan="2">Statistics</td></tr>
+
+		<?php if ( isset( $anstats ) && !empty( $anstats ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Analog Stats' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $anstats, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $awstats ) && !empty( $awstats ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Awstats' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $awstats, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
+
+		<?php if ( isset( $webalizer ) && !empty( $webalizer ) ) : ?>
+			<tr>
+				<th class="col-md-10"><?php _e( 'Webalizer' ); ?></th>
+				<td class="col-md-2"><?php echo hj_table_format_values( $webalizer, 'check' ); ?></td>
+			</tr>
+		<?php endif; ?>
 	</table>
 	<?php
 }
