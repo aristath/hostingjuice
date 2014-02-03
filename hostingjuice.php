@@ -7,6 +7,7 @@ Version: 1.0.0
 Author: Aristeides Stathopoulos
 Author URI: http://aristeides.com
 License: GPLv2 or later
+GitHub Plugin URI: https://github.com/aristath/hostingjuice
 */
 
 
