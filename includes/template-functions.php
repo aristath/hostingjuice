@@ -1,7 +1,7 @@
 <?php
 
 
-function hj_hosting_before_hosting() {
+function hj_package_actions() {
 	global $post;
 	$prefix = '_hj_';
 
@@ -28,10 +28,10 @@ function hj_hosting_before_hosting() {
 	<?php
 
 }
-add_action( 'shoestrap_single_pre_content', 'hj_hosting_before_hosting' );
+add_action( 'shoestrap_single_pre_content', 'hj_package_actions' );
 
 
-function hj_hosting_after_hosting() {
+function hj_package_details() {
 	global $post;
 	$prefix = '_hj_';
 
@@ -439,7 +439,7 @@ function hj_hosting_after_hosting() {
 	</table>
 	<?php
 }
-add_action( 'shoestrap_single_after_content', 'hj_hosting_after_hosting' );
+add_action( 'shoestrap_single_after_content', 'hj_package_details' );
 
 
 function hj_table_format_values( $val, $format = '' ) {
