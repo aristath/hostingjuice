@@ -1,59 +1,90 @@
 <?php
 
 
+function hj_hosting_before_hosting() {
+	global $post;
+	$prefix = '_hj_';
+
+	$price_per_month = get_post_meta( $post->ID, $prefix . 'pricepermonth', true );
+	$price_per_year  = get_post_meta( $post->ID, $prefix . 'priceperyear', true );
+	$purchase_link   = get_post_meta( $post->ID, $prefix . 'purchaselink', true );
+	?>
+
+	<hr>
+
+	<div class="single-purchase-buttons hosting-buttons row">
+		<div class="col-md-6">
+			<a class="btn btn-primary btn-block btn-lg" href="<?php echo $purchase_link; ?>">Buy Now!</a>
+		</div>
+		<div class="col-md-6">
+			<a class="btn btn-link btn-lg btn-block" href="<?php echo $purchase_link; ?>">
+				<?php echo $price_per_year; ?>
+			</a>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<hr>
+
+	<?php
+
+}
+add_action( 'shoestrap_single_pre_content', 'hj_hosting_before_hosting' );
+
+
 function hj_hosting_after_hosting() {
 	global $post;
+	$prefix = '_hj_';
 
-	$type        = get_post_meta( $post->ID, '_hj_type', true );
-	$disk        = get_post_meta( $post->ID, '_hj_disk', true );
-	$bandwidth   = get_post_meta( $post->ID, '_hj_bandwidth', true );
-	$accountsnr	 = get_post_meta( $post->ID, '_hj_accountsnr', true );
-	$cpanel      = get_post_meta( $post->ID, '_hj_cpanel', true );
-	$databases 	 = get_post_meta( $post->ID, '_hj_databases', true );
-	$emailsnr 	 = get_post_meta( $post->ID, '_hj_emailsnr', true );
-	$softaculous = get_post_meta( $post->ID, '_hj_softaculous', true );
-	$fantastico  = get_post_meta( $post->ID, '_hj_fantastico', true );
-	$addondomain = get_post_meta( $post->ID, '_hj_addondomain', true );
-	$parkdomains = get_post_meta( $post->ID, '_hj_parkdomains', true );
-	$freedomain  = get_post_meta( $post->ID, '_hj_freedomain', true );
-	$subdomains  = get_post_meta( $post->ID, '_hj_subdomains', true );
-	$ftp         = get_post_meta( $post->ID, '_hj_ftp', true );
+	$type        = get_post_meta( $post->ID, $prefix . 'type', true );
+	$disk        = get_post_meta( $post->ID, $prefix . 'disk', true );
+	$bandwidth   = get_post_meta( $post->ID, $prefix . 'bandwidth', true );
+	$accountsnr	 = get_post_meta( $post->ID, $prefix . 'accountsnr', true );
+	$cpanel      = get_post_meta( $post->ID, $prefix . 'cpanel', true );
+	$databases 	 = get_post_meta( $post->ID, $prefix . 'databases', true );
+	$emailsnr 	 = get_post_meta( $post->ID, $prefix . 'emailsnr', true );
+	$softaculous = get_post_meta( $post->ID, $prefix . 'softaculous', true );
+	$fantastico  = get_post_meta( $post->ID, $prefix . 'fantastico', true );
+	$addondomain = get_post_meta( $post->ID, $prefix . 'addondomain', true );
+	$parkdomains = get_post_meta( $post->ID, $prefix . 'parkdomains', true );
+	$freedomain  = get_post_meta( $post->ID, $prefix . 'freedomain', true );
+	$subdomains  = get_post_meta( $post->ID, $prefix . 'subdomains', true );
+	$ftp         = get_post_meta( $post->ID, $prefix . 'ftp', true );
 
-	// $support     = get_post_meta( $post->ID, '_hj_support', true );
-	$uptimeguara = get_post_meta( $post->ID, '_hj_uptimeguara', true );
-	$support247  = get_post_meta( $post->ID, '_hj_support247', true );
-	$moneyback   = get_post_meta( $post->ID, '_hj_moneyback', true );
+	// $support     = get_post_meta( $post->ID, $prefix . 'support', true );
+	$uptimeguara = get_post_meta( $post->ID, $prefix . 'uptimeguara', true );
+	$support247  = get_post_meta( $post->ID, $prefix . 'support247', true );
+	$moneyback   = get_post_meta( $post->ID, $prefix . 'moneyback', true );
 
-	// $email       = get_post_meta( $post->ID, '_hj_email', true );
-	$spamfilter  = get_post_meta( $post->ID, '_hj_spamfilter', true );
-	$antivirus   = get_post_meta( $post->ID, '_hj_antivirus', true );
-	$boxtrappers = get_post_meta( $post->ID, '_hj_boxtrappers', true );
-	$horde       = get_post_meta( $post->ID, '_hj_horde', true );
-	$squirrel    = get_post_meta( $post->ID, '_hj_squirrel', true );
-	$roundcube   = get_post_meta( $post->ID, '_hj_roundcube', true );
-	$imap        = get_post_meta( $post->ID, '_hj_imap', true );
-	$forwarder   = get_post_meta( $post->ID, '_hj_forwarder', true );
-	$responder   = get_post_meta( $post->ID, '_hj_responder', true );
-	$smtp        = get_post_meta( $post->ID, '_hj_smtp', true );
+	// $email       = get_post_meta( $post->ID, $prefix . 'email', true );
+	$spamfilter  = get_post_meta( $post->ID, $prefix . 'spamfilter', true );
+	$antivirus   = get_post_meta( $post->ID, $prefix . 'antivirus', true );
+	$boxtrappers = get_post_meta( $post->ID, $prefix . 'boxtrappers', true );
+	$horde       = get_post_meta( $post->ID, $prefix . 'horde', true );
+	$squirrel    = get_post_meta( $post->ID, $prefix . 'squirrel', true );
+	$roundcube   = get_post_meta( $post->ID, $prefix . 'roundcube', true );
+	$imap        = get_post_meta( $post->ID, $prefix . 'imap', true );
+	$forwarder   = get_post_meta( $post->ID, $prefix . 'forwarder', true );
+	$responder   = get_post_meta( $post->ID, $prefix . 'responder', true );
+	$smtp        = get_post_meta( $post->ID, $prefix . 'smtp', true );
 
-	// $features    = get_post_meta( $post->ID, '_hj_features', true );
-	$php5        = get_post_meta( $post->ID, '_hj_php5', true );
-	$perl        = get_post_meta( $post->ID, '_hj_perl', true );
-	$mysql       = get_post_meta( $post->ID, '_hj_mysql', true );
-	$postgresql  = get_post_meta( $post->ID, '_hj_postgresql', true );
-	$js          = get_post_meta( $post->ID, '_hj_js', true );
-	$cgibin      = get_post_meta( $post->ID, '_hj_cgibin', true );
-	$gd          = get_post_meta( $post->ID, '_hj_gd', true );
-	$dirprotect  = get_post_meta( $post->ID, '_hj_dirprotect', true );
-	$sendmail    = get_post_meta( $post->ID, '_hj_sendmail', true );
-	$carts       = get_post_meta( $post->ID, '_hj_carts', true );
-	$zend        = get_post_meta( $post->ID, '_hj_zend', true );
-	$crons       = get_post_meta( $post->ID, '_hj_crons', true );
-	$ioncube     = get_post_meta( $post->ID, '_hj_ioncube', true );
-	$backups     = get_post_meta( $post->ID, '_hj_backups', true );
-	$anstats     = get_post_meta( $post->ID, '_hj_anstats', true );
-	$awstats     = get_post_meta( $post->ID, '_hj_awstats', true );
-	$webalizer   = get_post_meta( $post->ID, '_hj_webalizer', true );
+	// $features    = get_post_meta( $post->ID, $prefix . 'features', true );
+	$php5        = get_post_meta( $post->ID, $prefix . 'php5', true );
+	$perl        = get_post_meta( $post->ID, $prefix . 'perl', true );
+	$mysql       = get_post_meta( $post->ID, $prefix . 'mysql', true );
+	$postgresql  = get_post_meta( $post->ID, $prefix . 'postgresql', true );
+	$js          = get_post_meta( $post->ID, $prefix . 'js', true );
+	$cgibin      = get_post_meta( $post->ID, $prefix . 'cgibin', true );
+	$gd          = get_post_meta( $post->ID, $prefix . 'gd', true );
+	$dirprotect  = get_post_meta( $post->ID, $prefix . 'dirprotect', true );
+	$sendmail    = get_post_meta( $post->ID, $prefix . 'sendmail', true );
+	$carts       = get_post_meta( $post->ID, $prefix . 'carts', true );
+	$zend        = get_post_meta( $post->ID, $prefix . 'zend', true );
+	$crons       = get_post_meta( $post->ID, $prefix . 'crons', true );
+	$ioncube     = get_post_meta( $post->ID, $prefix . 'ioncube', true );
+	$backups     = get_post_meta( $post->ID, $prefix . 'backups', true );
+	$anstats     = get_post_meta( $post->ID, $prefix . 'anstats', true );
+	$awstats     = get_post_meta( $post->ID, $prefix . 'awstats', true );
+	$webalizer   = get_post_meta( $post->ID, $prefix . 'webalizer', true );
 
 	?>
 
@@ -62,6 +93,8 @@ function hj_hosting_after_hosting() {
 		 * The FEATURES table
 		 */
 	?>
+	<hr>
+
 	<table class="table table-bordered table-striped">
 
 		<tr class="info"><td colspan="2">Features</td></tr>
