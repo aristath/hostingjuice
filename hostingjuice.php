@@ -40,7 +40,6 @@ add_filter( 'cmb_meta_boxes', 'hj_hosting_metabox' );
 function hj_hosting_metabox( array $meta_boxes ) {
 
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_hj_';
 
 	$meta_boxes[] = array(
 		'id'         => 'hj_hosting_metabox',
@@ -62,6 +61,8 @@ require_once( plugin_dir_path(__FILE__) . 'includes/template-functions.php' );
 
 
 function hj_hosting_fields_array() {
+	$prefix = '_hj_';
+
 	$fields = array(
 		array( 'section' => 'general', 'id'   => $prefix . 'type',        'name' => 'Hosting Type',                'type' => 'select',
 			'options' => array(
