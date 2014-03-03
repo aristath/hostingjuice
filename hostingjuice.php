@@ -25,6 +25,8 @@ function hj_create_hosting_post_type() {
 			),
 			'public'            => true,
 			'has_archive'       => true,
+			'rewrite'           => array( 'slug' => 'package' ),
+			'taxonomies'        => array( 'category' ),
 		)
 	);
 }
