@@ -2,6 +2,9 @@
 
 
 function hj_package_actions() {
+	global $post, $ss_framework;
+
+	$prefix = '_hj_';
 
 	$price_per_month = get_post_meta( $post->ID, $prefix . 'pricepermonth', true );
 	$price_per_year  = get_post_meta( $post->ID, $prefix . 'priceperyear', true );
@@ -10,17 +13,18 @@ function hj_package_actions() {
 
 	<hr>
 
-	<div class="single-purchase-buttons hosting-buttons row">
-		<div class="col-md-6">
-			<a class="btn btn-primary btn-block btn-lg" href="<?php echo $purchase_link; ?>">Buy Now!</a>
+	<?php echo $ss_framework->make_row( 'div', null, 'single-purchase-buttons hosting-buttons' ); ?>
+		<?php echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) ); ?>
+
+			<a class="<?php echo $ss_framework->button_classes( 'primary', 'large', 'btn-block' ); ?>" href="<?php echo $purchase_link; ?>">Buy Now!</a>
 		</div>
-		<div class="col-md-6">
-			<a class="btn btn-link btn-lg btn-block" href="<?php echo $purchase_link; ?>">
+		<?php echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) ); ?>
+			<a class="<?php echo $ss_framework->button_classes( 'link', 'large', 'btn-block' ); ?>" href="<?php echo $purchase_link; ?>">
 				<?php echo $price_per_year; ?>
 			</a>
 		</div>
 	</div>
-	<div class="clearfix"></div>
+	<?php echo $ss_framework->clearfix(); ?>
 	<hr>
 
 	<?php
@@ -141,29 +145,33 @@ add_action( 'widgets_init', function() { register_widget('HJ_Package_Widget'); }
 
 
 function hj_section_table( $section_id, $section_name ) {
-	global $post;
+	global $post, $ss_framework;
 	$prefix = '_hj_';
 	$fields = hj_hosting_fields_array();
 
-	?>
-	<table class="table table-bordered table-striped">
+	$section_active = false;
+	$content = '';
 
-		<tr class="info"><td colspan="2"><?php echo $section_name; ?></td></tr>
-		<?php
-			foreach ( $fields as $field ) {
-				if ( $field['section'] == $section_id ) {
-					$field_value = get_post_meta( $post->ID, $field['id'], true );
+	foreach ( $fields as $field ) {
+		if ( $field['section'] == $section_id ) {
+			$field_value = get_post_meta( $post->ID, $field['id'], true );
 
-					if  ( isset( $field_value ) && !empty( $field_value ) ) { ?>
-						<tr>
-							<th class="col-md-10"><?php _e( $field['name'] ); ?></th>
-							<td class="col-md-2"><?php echo hj_table_format_values( $field_value, $field['type'] ); ?></td>
-						</tr>
-						<?php
-					}
-				}
+			if  ( isset( $field_value ) && !empty( $field_value ) ) {
+				// set the section as active.
+				$section_active = true;
+
+				$content .= '<tr>';
+				$content .=  $ss_framework->make_col( 'th', array( 'medium' => 10 ) ) . __( $field['name'] ) . '</th>';
+				$content .= $ss_framework->make_col( 'td', array( 'medium' => 2 ) ) . hj_table_format_values( $field_value, $field['type'] ) . '</td>';
+				$content .= '</tr>';
 			}
-		?>
-	</table>
-	<?php
+		}
+	}
+
+	if ( $section_active == true ) {
+		echo '<table class="table table-bordered table-striped">';
+		echo '<tr class="info"><td colspan="2">' . $section_name . '</td></tr>';
+		echo $content;
+		echo '</table>';
+	}
 }
