@@ -1,34 +1,73 @@
 <?php
 
+/**
+ * Add the package selection on top of the purchase button and price
+ */
+function hj_package_switch() {
+	global $post, $ss_framework;
 
+	$prefix = '_hj_';
+
+	// What type of hosting is this?
+	$hosting_type = get_post_meta( $post->ID, $prefix . 'type', true );
+
+	$the_query = new WP_Query( 'post_type=hj_hosting&meta_key=' . $prefix . 'type&meta_value=' . $hosting_type . '&order=ASC' );
+
+	$current_post_id = $post->ID;
+
+	if ( is_singular( 'hj_hosting' ) ) {
+
+		if ( $the_query->have_posts() ) {
+			echo '<div class="' . $ss_framework->button_group_classes( 'small' ) . '">';
+
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+
+				// $btn_class = ( $current_post_id == get_the_ID() ) ? 'disabled' : 'default';
+				if ( $current_post_id == get_the_ID() ) {
+					echo '<button class="' . $ss_framework->button_classes( 'primary', 'medium', null, 'active' ) . '">' . get_the_title() . '</button>';
+				} else {
+					echo '<a class="' . $ss_framework->button_classes( 'default' ) . '" href="' . get_permalink() . '">' . get_the_title() . '</a>';
+				}
+			}
+
+			echo '</div>';
+		}
+	}
+	wp_reset_query();
+}
+add_action( 'shoestrap_single_pre_content', 'hj_package_switch', 5 );
+
+/**
+ * Adds the purchase button and price label
+ */
 function hj_package_actions() {
 	global $post, $ss_framework;
 
 	$prefix = '_hj_';
 
-	$price_per_month = get_post_meta( $post->ID, $prefix . 'pricepermonth', true );
-	$price_per_year  = get_post_meta( $post->ID, $prefix . 'priceperyear', true );
-	$purchase_link   = get_post_meta( $post->ID, $prefix . 'purchaselink', true );
-	?>
+	if ( is_singular( 'hj_hosting' ) ) {
 
-	<hr>
+		$price_per_month = get_post_meta( $post->ID, $prefix . 'pricepermonth', true );
+		$price_per_year  = get_post_meta( $post->ID, $prefix . 'priceperyear', true );
+		$purchase_link   = get_post_meta( $post->ID, $prefix . 'purchaselink', true );
 
-	<?php echo $ss_framework->make_row( 'div', null, 'single-purchase-buttons hosting-buttons' ); ?>
-		<?php echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) ); ?>
+		echo $ss_framework->make_row( 'div', null, 'single-purchase-buttons hosting-buttons' );
+			echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) );
+				echo '<a class="' . $ss_framework->button_classes( 'primary', 'large', 'btn-block' ) . '" href="' . $purchase_link . '">' . __( 'Buy Now!', 'hostingjuice' ) . '</a>';
+			echo '</div>';
 
-			<a class="<?php echo $ss_framework->button_classes( 'primary', 'large', 'btn-block' ); ?>" href="<?php echo $purchase_link; ?>">Buy Now!</a>
-		</div>
-		<?php echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) ); ?>
-			<a class="<?php echo $ss_framework->button_classes( 'link', 'large', 'btn-block' ); ?>" href="<?php echo $purchase_link; ?>">
-				<?php echo $price_per_year; ?>
-			</a>
-		</div>
-	</div>
-	<?php echo $ss_framework->clearfix(); ?>
-	<hr>
+			echo $ss_framework->make_col( 'div', array( 'medium' => 6 ) );
+				echo '<a class="' . $ss_framework->button_classes( 'link', 'large', 'btn-block' ) . '" href="' . $purchase_link . '">';
+				echo $price_per_year;
+				echo '</a>';
+			echo '</div>';
+		echo '</div>';
 
-	<?php
+		echo $ss_framework->clearfix();
 
+		echo '<hr>';
+	}
 }
 add_action( 'shoestrap_single_pre_content', 'hj_package_actions' );
 
@@ -49,10 +88,11 @@ function hj_package_details() {
 
 
 function hj_table_format_values( $val, $format = '' ) {
-	if ( $format == 'checkbox' )
+	if ( $format == 'checkbox' ) {
 		$return = ( $val ) ? '<i class="el-icon-ok green hosting-mark"></i>' : '<i class="el-icon-remove red hosting-mark"></i>';
-	else
+	} else {
 		$return = ( $val == '' || !isset( $val ) || is_null( $val ) ) ? '<i class="el-icon-minus null hosting-mark"></i>' : $val;
+	}
 
 	return $return;
 }
@@ -78,6 +118,7 @@ class HJ_Package_Widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
+		global $post;
 		$cache = wp_cache_get( 'widget_hj_pachage_details', 'widget' );
 
 		if ( ! is_array( $cache ) ) {
@@ -112,7 +153,11 @@ class HJ_Package_Widget extends WP_Widget {
 			echo $before_title, $title, $after_title;
 		}
 
-		hj_package_details();
+		hj_section_table( 'features', __('Features', 'hj') );
+		// hj_section_table( 'domain_ftp', __('Domain / FTP', 'hj') );
+		// hj_section_table( 'support', __('Support', 'hj') );
+		// hj_section_table( 'email', __('e-mail', 'hj') );
+		// hj_section_table( 'hosting_features', __('Advanced Features', 'hj') );
 
 		echo $after_widget;
 
