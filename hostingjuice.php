@@ -131,3 +131,5 @@ function hj_hosting_fields_array() {
 
 	return $fields;
 }
+
+require_once( plugin_dir_path(__FILE__) . 'includes/widgets.php' );
